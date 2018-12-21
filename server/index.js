@@ -13,7 +13,7 @@ const cors = require('cors');
 app.use(cors());
 app.options('*', cors());
 
-app.use(express.static(__dirname + '/../client/dist'));
+app.use(express.static('public'));
 
 app.get('/checkout/:id', jsonParser, (req, res) => {
   let item = req.params.id;
