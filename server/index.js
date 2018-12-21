@@ -15,13 +15,7 @@ app.options('*', cors());
 
 app.use(express.static(__dirname + '/../client/dist'));
 
-app.post('/cars', jsonParser, (req, res) => {
-  // console.log(req);
-  loadNewCar();
-});
-
-
-app.get('/cars/:id', jsonParser, (req, res) => {
+app.get('/checkout/:id', jsonParser, (req, res) => {
   let item = req.params.id;
   console.log(item);
   Car.find({id: item}).exec((err, doc) => {
