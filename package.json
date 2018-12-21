@@ -20,9 +20,9 @@
     "mongoose": "^4.9.6",
     "react-calendar": "^2.17.5",
     "react": "^15.4.2",
+    "react-calendar": "^2.17.5",
     "react-dom": "^15.4.2",
     "react-router-dom": "^4.3.1"
-
   },
   "devDependencies": {
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
