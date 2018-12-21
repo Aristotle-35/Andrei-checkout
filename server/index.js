@@ -20,7 +20,7 @@ app.post('/cars', jsonParser, (req, res) => {
   loadNewCar();
 });
 
-<<<<<<< HEAD
+
 app.get('/cars/:id', jsonParser, (req, res) => {
   let item = req.params.id;
   console.log(item);
@@ -29,17 +29,6 @@ app.get('/cars/:id', jsonParser, (req, res) => {
       console.log('Failed getting item from db: ', err)
     } else {
       console.log('Item from db: ', doc)
-=======
-app.get('/cars', jsonParser, (req, res) => {
-  console.log(req);
-  let item = JSON.parse(req.body.id);
-  console.log(item);
-  Car.find({id: item}).exec((err, doc) => {
-    if (err) {
-      console.log('Failed getting repo from db: ', err)
-    } else {
-      console.log('Repos from db: ', doc)
->>>>>>> 298dea316d5128f5e0efbb93480617e6cdedd0ef
     }
   })
   .then(result => {
