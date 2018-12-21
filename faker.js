@@ -32,10 +32,14 @@ const loadNewCar = ((times=100) => {
           'max': 24
         })
        },
-      dates: range
+      dates: range,
+      price: faker.random.number({
+        'min': 1,
+        'max': 10
+      })
     };
     db.addCar(document, result => {
-      // console.log(result);
+       console.log(result);
     });
   }
 })();
