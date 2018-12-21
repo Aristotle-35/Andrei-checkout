@@ -17,7 +17,8 @@ const carSchema = new mongoose.Schema({
   id: {type: Number, unique: true},
   location: {carLocation: String, airport: String},
   time: { open: Number, close: Number },
-  dates: [Date]
+  dates: [Date],
+  price: { type: Number, min: 1, max: 10 },
 });
 
 const Car = mongoose.model('Car', carSchema);
