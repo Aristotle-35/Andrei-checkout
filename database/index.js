@@ -21,7 +21,7 @@ const carSchema = new mongoose.Schema({
   price: { type: Number, min: 1, max: 10 },
 });
 
-const Car = mongoose.model('Car', carSchema);
+const Car = mongoose.model('Checkout', carSchema); //'Checkout' transformes into 'checkouts' as a collection name.
 
 const addCar = (document, callback) => {
   let vehicle = new Car (document);

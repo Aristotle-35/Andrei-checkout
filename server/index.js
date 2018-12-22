@@ -15,7 +15,7 @@ app.options('*', cors());
 
 app.use(express.static('public'));
 
-app.get('/checkout/:id', jsonParser, (req, res) => {
+app.get('/api/checkouts/:id', jsonParser, (req, res) => {
   let item = req.params.id;
   console.log(item);
   Car.find({id: item}).exec((err, doc) => {
