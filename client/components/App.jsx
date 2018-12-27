@@ -16,7 +16,7 @@ class App extends React.Component {
   }
 
   getCars () {
-    fetch(`${server}/1`)
+    fetch(`${server}/4`)
     .then(res => {
       if(res.ok) {
         return res.json()
@@ -49,15 +49,15 @@ class App extends React.Component {
           <Price price={this.state.price} />
         </div>
           <div className="container1" style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
-            <table>
-              <Start dates={this.state.dates}/>
-            </table>  
-            <table>
+            <div>
+            <Start dates={this.state.dates}/>
+            </div>
+              <div>
               <Dropdown 
                 title="Select time"
-                list={this.state.time}
+                time={this.state.time}
               />
-            </table>
+              </div>
           </div>
       </div>
       )
