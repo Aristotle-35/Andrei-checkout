@@ -10,6 +10,7 @@ class Location extends React.Component {
         listOpen: false,
         headerTitle: 'Select a pick up location'
       }
+      this.toggleList = this.toggleList.bind(this)
     }
 
     handleClickOutside () {
@@ -37,7 +38,7 @@ class Location extends React.Component {
         const{listOpen, headerTitle} = this.state
         return(
           <div className="dd-wrapper" >
-            <div className="dd-header" onClick={() => this.toggleList()}>
+            <div className="dd-header" onClick={this.toggleList}>
                 <div className="dd-header-title">{headerTitle}</div>
                 {listOpen
                     ? <FontAwesome name="angle-up" size="2x"/>
