@@ -9,11 +9,6 @@ module.exports = {
     filename: 'bundle.js',
     path: DIST_DIR
   },
-  optimization: {
-    splitChunks: {
-        chunks: 'all',
-    }
-  }, 
   module: {
     rules: [
       {

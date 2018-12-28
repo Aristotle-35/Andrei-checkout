@@ -26,7 +26,7 @@ class Location extends React.Component {
       }
 
       grabItem (item) {
-        console.log(item.target.innerHTML);
+        // console.log(item.target.innerHTML);
         this.setState({
             headerTitle: item.target.innerHTML
         });
