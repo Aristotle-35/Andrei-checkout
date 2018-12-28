@@ -1,6 +1,4 @@
 import React from 'react';
-// import Calendar from 'react-calendar';
-// 'react-calendar/dist/entry.nostyle';
 // import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 // import { Button } from 'reactstrap';
 // import Calendar from 'rc-calendar';
@@ -90,16 +88,11 @@ class Start extends React.Component {
 
   render () {
     return (
-      <tbody>
-        <tr>
-          <td>
+      <div>
           <button onClick={this.toggle}>
           {todayFormat}
           </button>
-          </td>
-        </tr>
-        <tr>
-          <td>
+      
           {
           this.state.dropdownOpen
             ? (
@@ -122,10 +115,7 @@ class Start extends React.Component {
               null
             )
         }
-          </td>
-        </tr>
-        
-      </tbody>
+        </div>
       )
   }
 }
