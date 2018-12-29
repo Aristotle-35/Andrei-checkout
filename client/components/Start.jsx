@@ -1,24 +1,14 @@
 import React from 'react';
-// import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
-// import { Button } from 'reactstrap';
-// import Calendar from 'rc-calendar';
-// import 'rc-calendar/assets/index.css';
 import DateRangePicker from 'react-daterange-picker';
 import 'react-daterange-picker/dist/css/react-calendar.css';
-import MomentRange from 'moment-range';
 import moment from 'moment';
  
-// const moment = MomentRange.extendMoment(Moment);
 
 const stateDefinitions = {
   available: {
     color: null,
     label: 'Available',
   },
-  // enquire: {
-  //   color: '#ffd200',
-  //   label: 'Enquire',
-  // },
   unavailable: {
     selectable: false,
     color: '#78818b',
@@ -26,45 +16,57 @@ const stateDefinitions = {
   },
 };
 
-const dateRanges = [
-  // {
-  //   state: 'enquire',
-  //   range: moment.range(
-  //     moment().add(2, 'weeks').subtract(5, 'days'),
-  //     moment().add(2, 'weeks').add(6, 'days')
-  //   ),
-  // },
-  {
-    state: 'unavailable',
-    range: moment.range(
-          moment().add(2, 'weeks').subtract(5, 'days'),
-          moment().add(2, 'weeks').add(6, 'days')
-        ),
-  },
-];
+    // const dateRanges = [
+    //   {
+    //     state: 'unavailable',
+    //     range: moment.range(
+    //       moment().add(3, 'weeks'),
+    //       moment().add(3, 'weeks').add(5, 'days')
+    //     ),
+    //   },
+    // ];
+
 
 const today = new Date();
 const todayFormat = today.toLocaleDateString('en-US');
 
+let dateRanges = [];
+let disabled = {
+  state: 'unavailable',
+};
+
 class Start extends React.Component {
   constructor (props) {
     super (props);
-
-    this.toggle = this.toggle.bind(this);
-    this.handleSelect = this.handleSelect.bind(this);
     this.state = {
       dropdownOpen: false,
       value: '',
       states: ''  
     };
+
+    this.toggle = this.toggle.bind(this);
+    this.handleSelect = this.handleSelect.bind(this);
   }
 
   toggle(event) {
     event.preventDefault();
-
     this.setState({
       dropdownOpen: !this.state.dropdownOpen
     });
+    this.props.dates.forEach((date) => {
+      let dateObjStart = new Date(date[0]);
+      let momentObjStart = moment(dateObjStart);
+      let dateObjEnd = new Date(date[1]);
+      let momentObjEnd = moment(dateObjEnd);
+      disabled.range = moment.range(momentObjStart, momentObjEnd);
+      dateRanges.push(disabled);
+      //never forget to 'refresh' your transport container! In this case it is 'disabled'.
+      disabled = {
+        state: 'unavailable',
+      };
+      // console.log('dateranges', dateRanges);
+    })
+    
   }
 
   disableDate (date) {
@@ -83,15 +85,19 @@ class Start extends React.Component {
       value: range,
       states: states,
     });
-    console.log(range)
+    console.log(range);
+    console.log(states);
   }
 
   render () {
+   
+    // console.log('dates', this.props.dates);
+    
     return (
       <div>
-          <button onClick={this.toggle}>
+          <div onClick={this.toggle}>
           {todayFormat}
-          </button>
+          </div>
       
           {
           this.state.dropdownOpen
@@ -107,9 +113,6 @@ class Start extends React.Component {
               showLegend={true}
               value={this.state.value}
               onSelect={this.handleSelect} />
-              // <div className="menu">
-              //  <button> Menu item 1 </button>
-              // </div>
             )
             : (
               null
