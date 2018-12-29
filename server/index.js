@@ -1,10 +1,8 @@
 const {Car} = require ('../database/index.js');
 const express = require('express');
-let app = express();
+const app = express();
 
-const loadNewCar = require('../faker.js');
-
-var bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 
 const jsonParser = bodyParser.json();
 
@@ -30,7 +28,23 @@ app.get('/api/turash/checkouts/:id', jsonParser, (req, res) => {
   })
 });
 
-let port = 3000;
+app.post('/api/turash/checkouts/:id', jsonParser, (req, res) => {
+  let item = req.params.id;
+  console.log(item);
+  console.log(req.body);
+  Car.updateOne({id: item}, {$push: {dates: req.body}}, (err, rawResponse) => {
+    if (err) {
+      console.log('Failed posting new range to db: ', err)
+    } else {
+      console.log('rawResponse from db: ', rawResponse)
+    }
+  })
+  .then(result => {
+    res.status(201).send(result)
+  })
+})
+
+const port = 3000;
 
 app.listen(port, function() {
   console.log(`listening on port ${port}`);
