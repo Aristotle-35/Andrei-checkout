@@ -85,8 +85,17 @@ class Start extends React.Component {
       value: range,
       states: states,
     });
+    let rangeToSend = [];
+    let start = range.start.toDate();
+    let end = range.end.toDate();
+    start = start.toString();
+    end = end.toString();
+    rangeToSend.push(start);
+    rangeToSend.push(end);
+    this.props.reserveRange(rangeToSend);
+
     console.log(range);
-    console.log(states);
+    console.log(rangeToSend);
   }
 
   render () {
