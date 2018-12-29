@@ -27,7 +27,7 @@ const addCar = (document, callback) => {
   let vehicle = new Car (document);
   vehicle.save((err, result) => {
     if (err) {
-      console.log('Failed writing repo in db: ', err);
+      console.log('Failed writing item in db: ', err);
     } else {
       callback(result);
     }
