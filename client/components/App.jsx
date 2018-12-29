@@ -2,10 +2,11 @@ import React from 'react';
 import Price from './Price.jsx';
 import Start from './Start.jsx';
 import Time from './Time.jsx';
-import Location from './Location.jsx'
+import Location from './Location.jsx';
+import styles from './App.module.css';
 
 
-var server = "http://localhost:3000/api/turash/checkouts"
+const server = "http://localhost:3000/api/turash/checkouts/74"
 class App extends React.Component {
   constructor (props) {
     super (props);
@@ -13,11 +14,14 @@ class App extends React.Component {
       price: '',
       dates: '',
       time: '',
+      newRange: '',
     }
+    this.getCars = this.getCars.bind(this);
+    this.reserveRange = this.reserveRange.bind(this);
   }
 
-  getCars () {
-    fetch(`${server}/4`)
+  getCars() {
+    fetch(server)
     .then(res => {
       if(res.ok) {
         return res.json()
@@ -39,25 +43,35 @@ class App extends React.Component {
     .catch(error => console.log(error))
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.getCars();
   }
 
+  reserveRange(range) {
+    this.setState({
+      newRange: range,
+    })
+  }
+
+  addRange(range) {
+    fetch(server, {
+      method: 'post',
+      body: JSON.stringify(range),
+      headers: {'Content-Type':'application/json'},
+      })
+  }
+
+
   render () {
-    console.log('location', this.state.location)
+    // console.log('location', this.state.location)
     return (
       <div>
         <div>
           <Price price={this.state.price} />
         </div> Trip start
-        <div className="container1" style={
-          {display: 'flex', 
-          flexDirection: 'row', 
-          // justifyContent: 'space-between',
-          cursor: 'pointer',}
-          }>
+        <div className={styles.container}>
           <div style={{border: '1px solid red', width: '290px'}}>
-            <Start dates={this.state.dates}/>
+            <Start dates={this.state.dates} reserveRange={this.reserveRange}/>
           </div>
           <div style={{border: '1px solid red', width: '150px'}}>
             <Time 
@@ -106,7 +120,12 @@ class App extends React.Component {
           border: '1px solid green',
           color: 'white',
           width: '441px'}
-          }>
+          } 
+          onClick={() => {
+            this.getCars();
+            this.addRange(this.state.newRange);
+            alert("We're sending you to checkout page.")
+          }}>
             Go to checkout
         </div>
       </div>
