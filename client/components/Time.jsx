@@ -14,6 +14,7 @@ class Time extends React.Component {
         listOpen: false,
         headerTitle: "Select time"
       }
+      this.toggleList = this.toggleList.bind(this)
     }
 
     handleClickOutside () {
@@ -71,7 +72,7 @@ class Time extends React.Component {
         const{listOpen, headerTitle} = this.state
         return(
           <div className="dd-wrapper">
-          <div className="dd-header" onClick={() => this.toggleList()}>
+          <div className="dd-header" onClick={this.toggleList}>
               <div className="dd-header-title">{headerTitle}</div>
             {listOpen
                 ? <FontAwesome name="angle-up" size="2x"/>
