@@ -1,5 +1,5 @@
 import React from 'react';
-import FontAwesome from 'react-fontawesome';
+// import FontAwesome from 'react-fontawesome';
 import locLogo from '../../public/icon-location.png';
 import planeLogo from '../../public/plane.png';
 
@@ -40,10 +40,7 @@ class Location extends React.Component {
           <div className="dd-wrapper" >
             <div className="dd-header" onClick={this.toggleList}>
                 <div className="dd-header-title">{headerTitle}</div>
-                {listOpen
-                    ? <FontAwesome name="angle-up" size="2x"/>
-                    : <FontAwesome name="angle-down" size="2x"/>
-                }
+               
             </div>
             {listOpen && 
             <div>

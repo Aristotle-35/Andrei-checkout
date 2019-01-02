@@ -1,6 +1,6 @@
 import React from 'react';
 import _ from 'underscore';
-import FontAwesome from 'react-fontawesome';
+// import FontAwesome from 'react-fontawesome';
 
 const timeSwitch = {
     0: 'Midnight',
@@ -74,10 +74,7 @@ class Time extends React.Component {
           <div className="dd-wrapper">
           <div className="dd-header" onClick={this.toggleList}>
               <div className="dd-header-title">{headerTitle}</div>
-            {listOpen
-                ? <FontAwesome name="angle-up" size="2x"/>
-                : <FontAwesome name="angle-down" size="2x"/>
-            }
+            
           </div>
            {listOpen && <ul className="dd-list">
              {this.timeRender(time)}
