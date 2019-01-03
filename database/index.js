@@ -19,6 +19,7 @@ const carSchema = new mongoose.Schema({
   time: { open: Number, close: Number },
   dates: [[Date]],
   price: { type: Number, min: 1, max: 10 },
+  priceAir: { type: Number, min: 20, max: 100 },
 });
 
 const Car = mongoose.model('Checkout', carSchema); //'Checkout' transformes into 'checkouts' as a collection name.

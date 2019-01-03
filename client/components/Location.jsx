@@ -1,7 +1,37 @@
 import React from 'react';
-// import FontAwesome from 'react-fontawesome';
+import style from 'styled-components';
 import locLogo from '../../public/icon-location.png';
 import planeLogo from '../../public/plane.png';
+import Form from './Form.jsx';
+
+const Logo = style.img`
+  width: 30px;
+  height: 30px;
+`;
+const Line = style.div`
+  color: white;
+  height: 10px;
+`;
+const Container1 = style(Line)`
+  background-color: #00b300;
+  &:hover {
+    background-color: green;
+  };
+  height: 70px;
+`;
+const Container2 = style.div`
+  border: 1.5px solid black;
+  &:hover {
+    border: 1.5px solid green;
+  };
+  height: 70px;
+`;
+
+const Header = style.div`
+  text-align: center;
+  vertical-align: middle;
+  line-height: 40px;
+`;
 
 class Location extends React.Component {
     constructor (props) {
@@ -10,7 +40,8 @@ class Location extends React.Component {
         listOpen: false,
         headerTitle: 'Select a pick up location'
       }
-      this.toggleList = this.toggleList.bind(this)
+      this.toggleList = this.toggleList.bind(this);
+      this.grabDeliveryAddress = this.grabDeliveryAddress.bind(this);
     }
 
     handleClickOutside () {
@@ -33,39 +64,53 @@ class Location extends React.Component {
         this.toggleList();
       }
 
+      grabDeliveryAddress(address) {
+        this.setState({
+          headerTitle: address,
+        });
+        this.toggleList();
+      }
+
       render(){
-        const{time} = this.props
-        const{listOpen, headerTitle} = this.state
+        const{ listOpen, headerTitle } = this.state
         return(
           <div className="dd-wrapper" >
-            <div className="dd-header" onClick={this.toggleList}>
+            <Header onClick={this.toggleList}>
                 <div className="dd-header-title">{headerTitle}</div>
-               
-            </div>
+            </Header>
             {listOpen && 
             <div>
+              <Line>f</Line>
                 <div>
                   CAR LOCATION
                 </div>
-                <div style={{backgroundColor: 'green', color: 'white'}}>
-                    <img src={locLogo} alt="locLogo" style={{width: 40, height: 40}}>
-                    </img><span onClick={(e) => this.grabItem(e)}>{this.props.location.carLocation}</span>
+                <Container1>
+                    <Logo src={locLogo} alt="locLogo">
+                    </Logo>
+                    <span onClick={(e) => this.grabItem(e)}>{this.props.location.carLocation}</span>
                     <div>Free</div>
-                </div>
+                </Container1>
                 <div>
                   We’ll send you the exact address once your trip is booked.
                 </div>
+                <Line>f</Line>
                 <div>
                   AIRPORT
                 </div>
-                <div style={{border: '1px solid black'}}>
-                    <img src={planeLogo} alt="planeLogo" style={{width: 40, height: 40}}>
-                    </img><span onClick={(e) => this.grabItem(e)}>{this.props.location.airport}</span>
+                <Container2>
+                    <Logo src={planeLogo} alt="planeLogo">
+                    </Logo><span onClick={(e) => this.grabItem(e)}>{this.props.location.airport}</span>
                     <div>$70</div>
-                </div>
-                {/* <div>
+                    {/* <div>{this.props.priceAir}</div> */}
+                </Container2>
+                <Line>f</Line>
+                 <div>
                   DELIVERY
-                </div> */}
+                </div>
+                <Container2>
+                  <Form grab={this.grabDeliveryAddress}/>
+                </Container2>
+                <Line>f</Line>
             </div>
                 }
           </div>
