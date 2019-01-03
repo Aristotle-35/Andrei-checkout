@@ -17,16 +17,18 @@ const carSchema = new mongoose.Schema({
   id: {type: Number, unique: true},
   location: {carLocation: String, airport: String},
   time: { open: Number, close: Number },
-  dates: [Date]
+  dates: [[Date]],
+  price: { type: Number, min: 1, max: 10 },
+  priceAir: { type: Number, min: 20, max: 100 },
 });
 
-const Car = mongoose.model('Car', carSchema);
+const Car = mongoose.model('Checkout', carSchema); //'Checkout' transformes into 'checkouts' as a collection name.
 
 const addCar = (document, callback) => {
   let vehicle = new Car (document);
   vehicle.save((err, result) => {
     if (err) {
-      console.log('Failed writing repo in db: ', err);
+      console.log('Failed writing item in db: ', err);
     } else {
       callback(result);
     }

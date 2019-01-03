@@ -1,0 +1,7 @@
+.container {
+    display: 'flex'; 
+    flex-direction: row;
+    cursor: 'pointer';
+    border: '1px solid red';
+    width: '290px';
+}

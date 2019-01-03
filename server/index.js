@@ -1,10 +1,10 @@
 const {Car} = require ('../database/index.js');
 const express = require('express');
-let app = express();
+const app = express();
+// to load 1 faker document to db:
+const db = require('../database/index.js');
 
-const loadNewCar = require('../faker.js');
-
-var bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 
 const jsonParser = bodyParser.json();
 
@@ -13,15 +13,9 @@ const cors = require('cors');
 app.use(cors());
 app.options('*', cors());
 
-app.use(express.static(__dirname + '/../client/dist'));
+app.use(express.static('public'));
 
-app.post('/cars', jsonParser, (req, res) => {
-  // console.log(req);
-  loadNewCar();
-});
-
-
-app.get('/cars/:id', jsonParser, (req, res) => {
+app.get('/api/turash/checkouts/:id', jsonParser, (req, res) => {
   let item = req.params.id;
   console.log(item);
   Car.find({id: item}).exec((err, doc) => {
@@ -36,7 +30,33 @@ app.get('/cars/:id', jsonParser, (req, res) => {
   })
 });
 
-let port = 3000;
+app.post('/api/turash/checkouts/:id', jsonParser, (req, res) => {
+  let item = req.params.id;
+  console.log(item);
+  console.log(req.body);
+  Car.updateOne({id: item}, {$push: {dates: req.body}}, (err, rawResponse) => {
+    if (err) {
+      console.log('Failed posting new range to db: ', err)
+    } else {
+      console.log('rawResponse from db: ', rawResponse)
+    }
+  })
+  .then(result => {
+    res.status(201).send(result)
+  })
+})
+
+// router for posting one fake document (instead not working fake.js):
+app.post('/api/checkouts/1', jsonParser, (req, res) => {
+  let document = req.body;
+  // console.log(item);
+  console.log(req.body);
+  db.addCar(document, (result) => {
+    console.log(result);
+  });
+})
+
+const port = 3000;
 
 app.listen(port, function() {
   console.log(`listening on port ${port}`);
