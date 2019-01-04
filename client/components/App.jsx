@@ -90,7 +90,7 @@ class App extends React.Component {
             dates: result[0].dates,
             time: result[0].time,
             location: result[0].location,
-            // priceAir: result[0].priceAir,
+            priceAir: result[0].priceAir,
           });
         },
       )
@@ -171,7 +171,7 @@ class App extends React.Component {
         <Container2>
           <Location
             location={location}
-            // priceAir={priceAir}
+            priceAir={priceAir}
           />
         </Container2>
         <Line>f</Line>

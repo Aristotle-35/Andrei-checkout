@@ -101,7 +101,7 @@ class Location extends React.Component {
                     <Logo src={planeLogo} alt="planeLogo">
                     </Logo><span onClick={(e) => this.grabItem(e)}>{this.props.location.airport}</span>
                     <div>$70</div>
-                    {/* <div>{this.props.priceAir}</div> */}
+                    <div>{this.props.priceAir}</div>
                 </Container2>
                 <Line>f</Line>
                  <div>
