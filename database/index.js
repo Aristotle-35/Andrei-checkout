@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 //Set up default mongoose connection
 mongoose.connect('mongodb://localhost/fetcher');
-
 // Get Mongoose to use the global promise library
 mongoose.Promise = global.Promise;
 //Get the default connection
@@ -11,7 +10,6 @@ db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
   console.log('db connected!')
 });
-
 
 const carSchema = new mongoose.Schema({
   id: {type: Number, unique: true},

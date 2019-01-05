@@ -1,18 +1,10 @@
 import React from 'react';
 import _ from 'underscore';
-// import style from 'styled-components';
 
 const timeSwitch = {
   0: 'Midnight',
   12: 'Noon',
 };
-
-// const Select = style.select`
-//   background-color: white;
-//   border: 2px solid green;
-//   width: 149px;
-//   height: 40px;
-// `;
 
 class Time extends React.Component {
   constructor(props) {

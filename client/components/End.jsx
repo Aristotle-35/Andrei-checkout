@@ -1,11 +1,8 @@
 import React from 'react';
 import DateRangePicker from 'react-daterange-picker';
-// import '../../public/main.css';
 import 'react-daterange-picker/dist/css/react-calendar.css';
-
 import moment from 'moment';
  
-
 const stateDefinitions = {
   available: {
     color: null,
@@ -17,17 +14,6 @@ const stateDefinitions = {
     label: 'Unavailable',
   },
 };
-
-    // const dateRanges = [
-    //   {
-    //     state: 'unavailable',
-    //     range: moment.range(
-    //       moment().add(3, 'weeks'),
-    //       moment().add(3, 'weeks').add(5, 'days')
-    //     ),
-    //   },
-    // ];
-
 
 const today = new Date();
 const todayFormat = today.toLocaleDateString('en-US');
@@ -67,8 +53,7 @@ class Start extends React.Component {
         state: 'unavailable',
       };
       // console.log('dateranges', dateRanges);
-    })
-    
+    })  
   }
 
   disableDate (date) {
@@ -100,7 +85,6 @@ class Start extends React.Component {
     this.setState({
       dropdownOpen: !this.state.dropdownOpen
     });
-    
     this.props.changeHeader(startHeader, endHeader)
 
     console.log(range);
@@ -112,31 +96,30 @@ class Start extends React.Component {
     let head = this.props.header ? this.props.header : todayFormat
     return (
       <div>
-          <div onClick={this.toggle}>
-          {head}
-          </div>
-      
-          {
-          this.state.dropdownOpen
-            ? (
-              <DateRangePicker
-              firstOfWeek={1}
-              numberOfCalendars={1}
-              selectionType='range'
-              minimumDate={new Date()}
-              stateDefinitions={stateDefinitions}
-              dateStates={dateRanges}
-              defaultState="available"
-              showLegend={true}
-              value={this.state.value}
-              onSelect={this.handleSelect} />
-            )
-            : (
-              null
-            )
-        }
+        <div onClick={this.toggle}>
+        {head}
         </div>
-      )
+        {
+        this.state.dropdownOpen
+          ? (
+            <DateRangePicker
+            firstOfWeek={1}
+            numberOfCalendars={1}
+            selectionType='range'
+            minimumDate={new Date()}
+            stateDefinitions={stateDefinitions}
+            dateStates={dateRanges}
+            defaultState="available"
+            showLegend={true}
+            value={this.state.value}
+            onSelect={this.handleSelect} />
+          )
+          : (
+            null
+          )
+       }
+      </div>
+    )
   }
 }
 

@@ -1,56 +1,11 @@
 import React from 'react';
-// import style from 'styled-components';
 import Price from './Price';
 import Start from './Start';
 import Time from './Time';
 import End from './End';
 import Location from './Location';
 
-const server = 'http://localhost:3002/api/turash/checkouts/1';
-
-// const Container1 = style.div`
-//   display: flex; 
-//   flex-direction: row;
-//   cursor: pointer;
-//   border: 0.5px solid black;
-//   width: 440px;
-//   text-align: left;
-//   vertical-align: middle;
-//   line-height: 40px; 
-// `;
-// const Compon1 = style.div`
-//   width: 290px;
-//   border: 0.5px solid black;
-// `;
-// const Compon2 = style(Compon1)`
-//   width: 150px;
-// `;
-// const Line = style.div`
-//   color: white;
-//   height: 10px;
-// `;
-// const Container2 = style.div`
-//   display: flex;
-//   flex-direction: colomn; 
-//   justify-content: center;
-//   cursor: pointer;
-//   border: 1px solid green;
-//   width: 440px;
-// `;
-// const Container3 = style.div`
-//   background-color: #00b300;
-//   cursor: pointer;
-//   border: 1px solid green;
-//   color: white;
-//   width: 440px;
-//   height: 40px;
-//   text-align: center;
-//   vertical-align: middle;
-//   line-height: 40px; 
-//   &:hover {
-//     background-color: green;
-//   };
-// `;
+const server = 'http://localhost:3002/api/turash/checkouts/';
 
 class App extends React.Component {
   constructor(props) {
@@ -62,7 +17,7 @@ class App extends React.Component {
       newRange: '',
       startHeader: false,
       endHeader: false,
-      priceAir: '',
+      priceAir: '', 
     };
     this.getCars = this.getCars.bind(this);
     this.reserveRange = this.reserveRange.bind(this);
@@ -74,7 +29,16 @@ class App extends React.Component {
   }
 
   getCars() {
-    fetch(server)
+    let id;
+    // console.log(window.location.pathname, "whats")
+    let itemID = window.location.pathname.slice(1, window.location.pathname.length - 1);
+    if (itemID) {
+      id = Number(itemID);
+    } else {
+      id = 1;
+    }
+    // console.log(id, "id");
+    fetch(server + id)
       .then((res) => {
         if (res.ok) {
           return res.json();
@@ -101,18 +65,29 @@ class App extends React.Component {
   }
 
   reserveRange(range) {
+    // console.log('new dates to db ', range);
     this.setState({
       newRange: range,
     });
   }
 
   addRange(range) {
-    fetch(server, {
+    console.log('new dates to db ', range);
+    let id;
+    // console.log(window.location.pathname, "whats")
+    let itemID = window.location.pathname.slice(1, window.location.pathname.length - 1);
+    if (itemID) {
+      id = Number(itemID);
+    } else {
+      id = 1;
+    }
+    fetch(server + id, {
       method: 'post',
       body: JSON.stringify(range),
       headers: { 'Content-Type': 'application/json' },
     })
     .then(res => {
+      console.log('result of posting new dates', res)
       this.getCars();
     })
   }

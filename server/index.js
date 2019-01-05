@@ -3,26 +3,24 @@ const express = require('express');
 const app = express();
 // to load 1 faker document to db:
 const db = require('../database/index.js');
-
 const bodyParser = require('body-parser');
-
 const jsonParser = bodyParser.json();
-
 const cors = require('cors');
+const port = 3002;
 
 app.use(cors());
 app.options('*', cors());
-
-app.use(express.static('public'));
+app.use('/', express.static('public'));
+app.use(/\/\d+\//, express.static('public'));
 
 app.get('/api/turash/checkouts/:id', jsonParser, (req, res) => {
   let item = req.params.id;
-  console.log(item);
+  // console.log(item);
   Car.find({id: item}).exec((err, doc) => {
     if (err) {
       console.log('Failed getting item from db: ', err)
     } else {
-      console.log('Item from db: ', doc)
+      // console.log('Item from db: ', doc)
     }
   })
   .then(result => {
@@ -32,17 +30,15 @@ app.get('/api/turash/checkouts/:id', jsonParser, (req, res) => {
 
 app.post('/api/turash/checkouts/:id', jsonParser, (req, res) => {
   let item = req.params.id;
-  console.log(item);
+  console.log('id: ', item);
   console.log(req.body);
   Car.updateOne({id: item}, {$push: {dates: req.body}}, (err, rawResponse) => {
     if (err) {
       console.log('Failed posting new range to db: ', err)
     } else {
-      console.log('rawResponse from db: ', rawResponse)
+      console.log('rawResponse from db: ', rawResponse);
+      res.status(201).send(rawResponse)
     }
-  })
-  .then(result => {
-    res.status(201).send(result)
   })
 })
 
@@ -55,8 +51,6 @@ app.post('/api/checkouts/1', jsonParser, (req, res) => {
     console.log(result);
   });
 })
-
-const port = 3002;
 
 app.listen(port, function() {
   console.log(`listening on port ${port}`);
