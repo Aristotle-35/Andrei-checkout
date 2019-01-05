@@ -1,23 +1,23 @@
 import React from 'react';
-import style from 'styled-components';
+// import style from 'styled-components';
 import locLogo from '../../public/icon-location.png';
 
-const Logo = style.img`
-  width: 30px;
-  height: 30px;
-`;
+// const Logo = style.img`
+//   width: 30px;
+//   height: 30px;
+// `;
 
-const Input = style.div`
-  height: 70px;
-  background-color: green;
-  text-align: center;
-`;
+// const Input = style.div`
+//   height: 70px;
+//   background-color: green;
+//   text-align: center;
+// `;
 
-const Input2 = style.input`
-  display: block;
-  margin : 0 auto;
-  height: 30px;
-`;
+// const Input2 = style.input`
+//   display: block;
+//   margin : 0 auto;
+//   height: 30px;
+// `;
 
 class Form extends React.Component {
     constructor(props) {
@@ -58,8 +58,8 @@ class Form extends React.Component {
   render () {
     if (!this.state.listOpen) {
       return (<div>
-        <Logo src={locLogo} alt="locLogo">
-        </Logo>
+        <img id="Logo" src={locLogo} alt="locLogo">
+        </img>
         <span onClick={this.toggleForm}>
           {this.state.headerTitle}
           <div>
@@ -71,14 +71,13 @@ class Form extends React.Component {
     }
     return (
       <form onSubmit={this.onSubmit}>
-        <Input>
-          <Input2 type="text" 
+        <div className ="Input">
+          <input id ="Input2" type="text" 
           name="delivery" onChange={this.onChange} value={this.state.inputValue}/>
-        </Input>
+        </div>
       </form>
     )
   }
 }
-  
-  
-  export default Form;
+
+export default Form;

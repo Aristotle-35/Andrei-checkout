@@ -56,7 +56,7 @@ app.post('/api/checkouts/1', jsonParser, (req, res) => {
   });
 })
 
-const port = 3000;
+const port = 3002;
 
 app.listen(port, function() {
   console.log(`listening on port ${port}`);

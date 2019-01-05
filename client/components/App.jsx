@@ -1,57 +1,56 @@
 import React from 'react';
-import style from 'styled-components';
+// import style from 'styled-components';
 import Price from './Price';
 import Start from './Start';
 import Time from './Time';
 import End from './End';
 import Location from './Location';
-// import styles from './App.module.css';
 
-const server = 'http://localhost:3000/api/turash/checkouts/1';
+const server = 'http://localhost:3002/api/turash/checkouts/1';
 
-const Container1 = style.div`
-  display: flex; 
-  flex-direction: row;
-  cursor: pointer;
-  border: 0.5px solid black;
-  width: 440px;
-  text-align: left;
-  vertical-align: middle;
-  line-height: 40px; 
-`;
-const Compon1 = style.div`
-  width: 290px;
-  border: 0.5px solid black;
-`;
-const Compon2 = style(Compon1)`
-  width: 150px;
-`;
-const Line = style.div`
-  color: white;
-  height: 10px;
-`;
-const Container2 = style.div`
-  display: flex;
-  flex-direction: colomn; 
-  justify-content: center;
-  cursor: pointer;
-  border: 1px solid green;
-  width: 440px;
-`;
-const Container3 = style.div`
-  background-color: #00b300;
-  cursor: pointer;
-  border: 1px solid green;
-  color: white;
-  width: 440px;
-  height: 40px;
-  text-align: center;
-  vertical-align: middle;
-  line-height: 40px; 
-  &:hover {
-    background-color: green;
-  };
-`;
+// const Container1 = style.div`
+//   display: flex; 
+//   flex-direction: row;
+//   cursor: pointer;
+//   border: 0.5px solid black;
+//   width: 440px;
+//   text-align: left;
+//   vertical-align: middle;
+//   line-height: 40px; 
+// `;
+// const Compon1 = style.div`
+//   width: 290px;
+//   border: 0.5px solid black;
+// `;
+// const Compon2 = style(Compon1)`
+//   width: 150px;
+// `;
+// const Line = style.div`
+//   color: white;
+//   height: 10px;
+// `;
+// const Container2 = style.div`
+//   display: flex;
+//   flex-direction: colomn; 
+//   justify-content: center;
+//   cursor: pointer;
+//   border: 1px solid green;
+//   width: 440px;
+// `;
+// const Container3 = style.div`
+//   background-color: #00b300;
+//   cursor: pointer;
+//   border: 1px solid green;
+//   color: white;
+//   width: 440px;
+//   height: 40px;
+//   text-align: center;
+//   vertical-align: middle;
+//   line-height: 40px; 
+//   &:hover {
+//     background-color: green;
+//   };
+// `;
 
 class App extends React.Component {
   constructor(props) {
@@ -134,55 +133,55 @@ class App extends React.Component {
       <div>
         <Price price={price} />
         <b>Trip start</b>
-        <Container1>
-          <Compon1>
+        <div className="Container1">
+          <div id="Compon1">
             <Start
               dates={dates}
               header={startHeader}
               changeHeader={this.changeHeader}
               reserveRange={this.reserveRange}
             />
-          </Compon1>
-          <Compon2>
+          </div>
+          <div id="Compon2">
             <Time
               time={time}
             />
-          </Compon2>
-        </Container1>
-        <Line>f</Line>
+          </div>
+        </div>
+        <div id="Line">f</div>
           <b>Trip end</b>
-        <Container1>
-          <Compon1>
+        <div className="Container1">
+          <div id="Compon1">
             <End
               dates={dates}
               header={endHeader}
               changeHeader={this.changeHeader}
               reserveRange={this.reserveRange}
             />
-          </Compon1>
-          <Compon2>
+          </div>
+          <div id="Compon2">
             <Time
               time={time}
             />
-          </Compon2>
-        </Container1>
-        <Line>f</Line>
+          </div>
+        </div>
+        <div id="Line">f</div>
           <b>Pickup & return location</b>
-        <Container2>
+        <div className="Container2">
           <Location
             location={location}
             priceAir={priceAir}
           />
-        </Container2>
-        <Line>f</Line>
-        <Container3
+        </div>
+        <div id="Line">f</div>
+        <div className="Container3"
           onClick={() => {
             this.addRange(this.state.newRange);
             alert("We're sending you to the checkout page.");
           }}
         >
             Go to checkout
-        </Container3>
+        </div>
       </div>
     );
   }
