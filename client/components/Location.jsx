@@ -69,7 +69,7 @@ class Location extends React.Component {
             <div className= "Container5">
               <img id="Logo" src={planeLogo} alt="locLogo"></img>
               <span onClick={(e) => this.grabItem(e)}>{this.props.location.airport}</span>
-              <div>{this.props.priceAir}</div>
+              <div>$ {this.props.priceAir}</div>
             </div>
             <div id="Line">f</div>
               <div>

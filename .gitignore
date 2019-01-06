@@ -36,6 +36,7 @@ build/Release
 node_modules/
 jspm_packages/
 public/bundle.js
+.elasticbeanstalk/
 
 # TypeScript v1 declaration files
 typings/
@@ -60,3 +61,8 @@ typings/
 
 # next.js build output
 .next
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
