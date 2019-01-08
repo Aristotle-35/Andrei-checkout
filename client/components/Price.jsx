@@ -7,9 +7,19 @@ class Price extends React.Component {
 
   render () {
     return (
-      <h1>
-        ${this.props.price} per day
-      </h1>
+      <div className="reservationBoxVehiclePrice">
+        <div className="styledCurrency reservationBoxVehiclePrice-amount">
+          <div className="styledCurrency_currency">
+            $
+          </div>
+          <div className="styledCurrency_value styledCurrency_value__large">
+            {this.props.price}
+            <span className="reservationBoxVehiclePrice_unit">
+              per day
+            </span>
+          </div>
+        </div>
+      </div>
     )
   }
 }

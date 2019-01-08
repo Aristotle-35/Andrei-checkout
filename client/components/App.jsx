@@ -30,14 +30,14 @@ class App extends React.Component {
 
   getCars() {
     let id;
-    // console.log(window.location.pathname, "whats")
+    console.log(window.location.pathname, "whats")
     let itemID = window.location.pathname.slice(1, window.location.pathname.length - 1);
     if (itemID) {
       id = Number(itemID);
     } else {
       id = 1;
     }
-    // console.log(id, "id");
+    console.log(id, "id");
     fetch(server + id)
       .then((res) => {
         if (res.ok) {

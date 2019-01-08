@@ -3,20 +3,20 @@
   flex-direction: row;
   cursor: pointer;
   border: 0.5px solid black;
-  width: 440px;
+  width: 100%;
   text-align: left;
   vertical-align: middle;
   line-height: 40px; 
 }
 
 #Compon1 {
-  width: 290px;
-  border: 0.5px solid black;
+  width: 66%;
+  /* border: 0.5px solid black; */
 }
 
 #Compon2 {
-  width: 150px;
-  border: 0.5px solid black;
+  width: 34%;
+  /* border: 0.5px solid black; */
 }
 
 #Line {
@@ -30,7 +30,7 @@
   justify-content: center;
   cursor: pointer;
   border: 1px solid green;
-  width: 440px;
+  width: 100%;
 }
 
 .Container3 {
@@ -38,7 +38,7 @@
   cursor: pointer;
   border: 1px solid green;
   color: white;
-  width: 440px;
+  width: 100%;
   height: 40px;
   text-align: center;
   vertical-align: middle;
@@ -53,20 +53,36 @@ div.Container3:hover {
   width: 30px;
   height: 30px;
 }
+.Location {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reservationBox_title {
+  text-transform: uppercase;
+  font-size: 13px;
+  font-family: BasisBold, Avenir, Helvetica Neue, Helvetica, sans-serif;
+}
 
 .Container4 {
   color: white;
   background-color: #00b300;
-  height: 70px;
+  height: 60px;
 }
 
 div.Container4:hover {
   background-color: green;
 }
 
+.reservationBoxLocationOptionGroup_subtitle {
+  font-size: 11px;
+  color: #949494;
+}
+
 .Container5 {
   border: 1.5px solid black;
-  height: 70px;
+  height: 60px;
 }
 
 div.Container5:hover {
@@ -80,24 +96,77 @@ div.Container5:hover {
 }
 
 .Input {
-  height: 70px;
+  height: 60px;
   background-color: green;
   text-align: center;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #Input2 {
-  margin-left: 20px;
   margin-top: 15px;
-  height: 40px;
+  height: 30px;
   width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 13px; 
 }
-  
+
 #Select {
   background-color: white;
   border: 2px solid green;
-  width: 149px;
+  width: 100%;
   height: 40px;
 }
-   
 
+.styledCurrency_value {
+  font-family: Freight,HoeflerText-Black,Times New Roman,serif;
+  font-size: 45px;
+  font-weight: 400;
+  line-height: 1;
+  margin: 0 0 0 5px;
+}
 
+.reservationBoxVehiclePrice {
+  border-radius: 30px 30px 0 0;
+  margin-right: 0;
+  padding: 30px 0 0;
+  right: 0;
+  text-align: center;
+  width: 100%;
+}
+
+.styledCurrency {
+  display: flex;
+}
+
+.styledCurrency_currency {
+  font-family: Plantin,AmericanTypewriter-Condensed,Times New Roman,serif;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: .8;
+  margin: 15px 0 0 5px;
+}
+
+.styledCurrency_value {
+  font-family: Freight,HoeflerText-Black,Times New Roman,serif;
+  font-size: 45px;
+  font-weight: 400;
+  line-height: 1;
+  margin: 0 0 0 5px;
+}
+
+.styledCurrency_value__large {
+  font-size: 62px;
+}
+
+.reservationBoxVehiclePrice_unit {
+  display: inline-block;
+  font-size: 16px;
+  margin-left: 5px;
+  margin-top: 20px;
+  font-family: BasisGrotesque,Avenir,Helvetica Neue,Helvetica,sans-serif;
+  font-weight: 400;
+  text-align: right;
+}

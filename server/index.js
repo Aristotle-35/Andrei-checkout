@@ -15,7 +15,7 @@ app.use(/\/\d+\//, express.static('public'));
 
 app.get('/api/turash/checkouts/:id', jsonParser, (req, res) => {
   let item = req.params.id;
-  // console.log(item);
+  console.log(item);
   Car.find({id: item}).exec((err, doc) => {
     if (err) {
       console.log('Failed getting item from db: ', err)
