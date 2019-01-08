@@ -49,33 +49,33 @@ class Location extends React.Component {
           <div className="dd-header-title">{headerTitle}</div>
         </div>
         {listOpen && 
-        <div>
+        <div className="Location">
           <div id="Line">f</div>
-            <div>
+            <div className="Location reservationBox_title">
               CAR LOCATION
             </div>
-            <div className= "Container4">
-              <img id="Logo" src={locLogo} alt="locLogo"></img>
+            <div className= "Location Container4">
+              <img id="Logo" src="http://localhost:3002/bfac8a9e7aa2ee22b89947e91499b6e2.png" alt="locLogo"></img>
               <span onClick={(e) => this.grabItem(e)}>{this.props.location.carLocation}</span>
               <div>Free</div>
             </div>
-            <div>
+            <div className="Location reservationBoxLocationOptionGroup_subtitle">
               We’ll send you the exact address once your trip is booked.
             </div>
             <div id="Line">f</div>
-            <div>
+            <div className="Location reservationBox_title">
               AIRPORT
             </div>
-            <div className= "Container5">
-              <img id="Logo" src={planeLogo} alt="locLogo"></img>
+            <div className= "Location Container5">
+              <img id="Logo" src="http://localhost:3002/ad01f8f012c1ffd91c0757a9c58181a4.png" alt="locLogo"></img>
               <span onClick={(e) => this.grabItem(e)}>{this.props.location.airport}</span>
-              <div>$ {this.props.priceAir}</div>
+              <div>${this.props.priceAir}</div>
             </div>
             <div id="Line">f</div>
-              <div>
+              <div className="Location reservationBox_title">
               DELIVERY
             </div>
-            <div className= "Container5">
+            <div className= "Location Container5">
               <Form grab={this.grabDeliveryAddress}/>
             </div>
             <div id="Line">f</div>

@@ -39,7 +39,7 @@ class Form extends React.Component {
   render () {
     if (!this.state.listOpen) {
       return (<div>
-        <img id="Logo" src={locLogo} alt="locLogo">
+        <img id="Logo" src="http://localhost:3002/bfac8a9e7aa2ee22b89947e91499b6e2.png" alt="locLogo">
         </img>
         <span onClick={this.toggleForm}>
           {this.state.headerTitle}
